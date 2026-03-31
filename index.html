@@ -17,6 +17,57 @@
     </div>
 
     <h2 id="score"></h2>
+    <script>
+
+let questions = [
+    {
+        question: "What is 2 + 2?",
+        options: ["2", "3", "4", "5"],
+        answer: 2
+    },
+    {
+        question: "Capital of India?",
+        options: ["Chennai", "Delhi", "Mumbai", "Kolkata"],
+        answer: 1
+    },
+    {
+        question: "5 x 3 = ?",
+        options: ["15", "10", "20", "8"],
+        answer: 0
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion() {
+    let q = questions[currentQuestion];
+    document.getElementById("question").innerText = q.question;
+
+    document.getElementById("opt0").innerText = q.options[0];
+    document.getElementById("opt1").innerText = q.options[1];
+    document.getElementById("opt2").innerText = q.options[2];
+    document.getElementById("opt3").innerText = q.options[3];
+}
+
+function checkAnswer(option) {
+    if (option === questions[currentQuestion].answer) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        loadQuestion();
+    } else {
+        document.getElementById("quiz").innerHTML = "<h2>Quiz Finished!</h2>";
+        document.getElementById("score").innerText = "Your Score: " + score;
+    }
+}
+
+loadQuestion();
+
+</script>
 
 </body>
 </html>
